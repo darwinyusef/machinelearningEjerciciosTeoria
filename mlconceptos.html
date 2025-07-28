@@ -9,10 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Warm Neutrals (Slate/Stone) with a Teal Accent -->
-    <!-- Application Structure Plan: Se ha diseñado una aplicación de una sola página con desplazamiento temático. La estructura no sigue el orden del informe, sino que agrupa los conceptos para una mejor experiencia de aprendizaje: 1) Introducción, 2) Comparación visual del enfoque tradicional vs. ML, 3) Galería interactiva de aplicaciones, 4) Pestañas interactivas y un gráfico para las clasificaciones de ML. Esta estructura está pensada para guiar al usuario desde el concepto fundamental hacia las aplicaciones prácticas y finalmente a los detalles técnicos, facilitando la comprensión y la retención. -->
-    <!-- Visualization & Content Choices: 1. ¿Qué es ML?: (Meta: Comparar) Se usa un diagrama HTML/CSS lado a lado para contrastar el flujo de trabajo tradicional con el de ML, ya que es más directo y semántico que un gráfico para un proceso. Interacción: Hover para detalles. 2. Aplicaciones: (Meta: Organizar) Una cuadrícula de tarjetas interactivas para manejar la larga lista de ejemplos. Interacción: Clic para expandir y mostrar detalles, evitando la sobrecarga de información. 3. Clasificaciones: (Meta: Informar/Comparar) Se usan pestañas para separar los tres criterios de clasificación. Para "Supervisión", se utiliza un gráfico de barras de Chart.js para visualizar el "nivel de guía humana", haciendo el concepto abstracto más tangible. Interacción: Clic en las pestañas y en las barras del gráfico para mostrar información contextual. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -73,66 +69,69 @@
 
     <header class="bg-slate-900 text-white text-center py-24 px-6">
         <h1 class="text-4xl md:text-6xl font-bold mb-4">El Paisaje del Aprendizaje Automático</h1>
-        <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-300">Una exploración interactiva de los conceptos fundamentales que definen el Machine Learning, basada en el capítulo 1 de "Hands-On Machine Learning".</p>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-300">Una exploración interactiva de los conceptos fundamentales que definen el Machine Learning.</p>
     </header>
 
     <main>
         <section id="what-is-ml" class="py-20 px-6 bg-white">
             <h2 class="section-title">¿Qué es el Aprendizaje Automático?</h2>
-            <p class="section-intro">El aprendizaje automático es la ciencia (y el arte) de programar computadoras para que puedan aprender de los datos. A diferencia de la programación tradicional, donde se escriben reglas explícitas, el ML permite a los sistemas descubrir patrones y mejorar con la experiencia. La siguiente sección compara visualmente ambos enfoques.</p>
-            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+            <p class="section-intro">El **Aprendizaje Automático (ML)** es una rama de la inteligencia artificial que dota a los sistemas informáticos de la capacidad de **aprender de los datos y mejorar su rendimiento sin ser programados explícitamente**. En lugar de seguir instrucciones paso a paso, los algoritmos de ML identifican patrones, hacen predicciones y se adaptan a nueva información. </p>
+            <p class="section-intro mt-4">Un programa de computadora aprende de la **experiencia (E)** con respecto a alguna **tarea (T)** y alguna **medida de rendimiento (P)**, si su rendimiento en **T**, medido por **P**, mejora con la **experiencia E**.</p>
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 mt-12">
                 <div class="p-8 border-2 border-slate-200 rounded-xl">
                     <h3 class="text-2xl font-bold text-center mb-6 text-slate-700">Enfoque Tradicional</h3>
+                    <p class="text-sm text-slate-600 mb-6 text-center">En este paradigma, los desarrolladores deben definir cada paso y regla de forma explícita.</p>
                     <div class="space-y-4">
                         <div class="flex items-center p-4 bg-slate-100 rounded-lg">
                             <span class="text-3xl mr-4">🧐</span>
                             <div>
-                                <h4 class="font-semibold">1. Estudiar el Problema</h4>
-                                <p class="text-sm text-slate-600">Analizar manualmente qué patrones definen el problema (ej. palabras comunes en el spam).</p>
+                                <h4 class="font-semibold">1. Analizar y Modelar</h4>
+                                <p class="text-sm text-slate-600">Se estudian y analizan manualmente los requisitos del problema para identificar patrones y reglas lógicas.</p>
                             </div>
                         </div>
                         <div class="flex justify-center"><span class="text-2xl text-slate-400">⬇️</span></div>
                         <div class="flex items-center p-4 bg-slate-100 rounded-lg">
                             <span class="text-3xl mr-4">✍️</span>
                             <div>
-                                <h4 class="font-semibold">2. Escribir Reglas</h4>
-                                <p class="text-sm text-slate-600">Crear un largo y complejo conjunto de reglas explícitas y difíciles de mantener.</p>
+                                <h4 class="font-semibold">2. Codificar Reglas Explícitas</h4>
+                                <p class="text-sm text-slate-600">Se escribe un programa complejo con un gran número de reglas "si-entonces" difíciles de mantener y escalar.</p>
                             </div>
                         </div>
                         <div class="flex justify-center"><span class="text-2xl text-slate-400">⬇️</span></div>
                         <div class="flex items-center p-4 bg-slate-100 rounded-lg">
                             <span class="text-3xl mr-4">🔄</span>
                             <div>
-                                <h4 class="font-semibold">3. Evaluar y Repetir</h4>
-                                <p class="text-sm text-slate-600">Probar el programa y volver al paso 1 para añadir más reglas si falla.</p>
+                                <h4 class="font-semibold">3. Prueba y Ajuste Manual</h4>
+                                <p class="text-sm text-slate-600">El programa se prueba y se ajusta manualmente cuando surgen nuevas condiciones o requisitos.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="p-8 border-2 border-teal-500 rounded-xl bg-teal-50/50">
                     <h3 class="text-2xl font-bold text-center mb-6 text-teal-800">Enfoque de Machine Learning</h3>
-                     <div class="space-y-4">
+                    <p class="text-sm text-slate-600 mb-6 text-center">Aquí, el sistema aprende directamente de los datos, adaptándose y mejorando con la experiencia.</p>
+                    <div class="space-y-4">
                         <div class="flex items-center p-4 bg-white rounded-lg">
-                            <span class="text-3xl mr-4">🧐</span>
+                            <span class="text-3xl mr-4">📊</span>
                             <div>
-                                <h4 class="font-semibold">1. Estudiar el Problema</h4>
-                                <p class="text-sm text-slate-600">Analizar el problema y recolectar datos etiquetados.</p>
+                                <h4 class="font-semibold">1. Recolectar y Preparar Datos</h4>
+                                <p class="text-sm text-slate-600">Se recopilan grandes volúmenes de datos relevantes y se preparan para el entrenamiento.</p>
                             </div>
                         </div>
                         <div class="flex justify-center"><span class="text-2xl text-teal-400">⬇️</span></div>
                         <div class="flex items-center p-4 bg-white rounded-lg ring-2 ring-teal-500">
-                            <span class="text-3xl mr-4">🤖</span>
+                            <span class="text-3xl mr-4">🧠</span>
                             <div>
-                                <h4 class="font-semibold">2. Entrenar un Modelo</h4>
-                                <p class="text-sm text-slate-600">El algoritmo aprende automáticamente los patrones a partir de los datos. El código es más corto y simple.</p>
+                                <h4 class="font-semibold">2. Entrenar el Modelo</h4>
+                                <p class="text-sm text-slate-600">Un algoritmo aprende patrones y relaciones a partir de los datos, construyendo un "modelo" de forma autónoma.</p>
                             </div>
                         </div>
                         <div class="flex justify-center"><span class="text-2xl text-teal-400">⬇️</span></div>
                         <div class="flex items-center p-4 bg-white rounded-lg">
-                            <span class="text-3xl mr-4">🚀</span>
+                            <span class="text-3xl mr-4">✨</span>
                             <div>
-                                <h4 class="font-semibold">3. Evaluar y Lanzar</h4>
-                                <p class="text-sm text-slate-600">El sistema se adapta a nuevos patrones simplemente re-entrenando con datos nuevos.</p>
+                                <h4 class="font-semibold">3. Desplegar y Mejorar</h4>
+                                <p class="text-sm text-slate-600">El modelo entrenado se utiliza para hacer predicciones, y se puede reentrenar con nuevos datos para adaptarse y mejorar continuamente.</p>
                             </div>
                         </div>
                     </div>
@@ -141,15 +140,15 @@
         </section>
 
         <section id="applications" class="py-20 px-6">
-            <h2 class="section-title">Un Universo de Aplicaciones</h2>
-            <p class="section-intro">El aprendizaje automático no es solo teoría; impulsa una increíble variedad de aplicaciones que usamos todos los días. Desde analizar imágenes médicas hasta recomendarte productos o potenciar bots en videojuegos. Explora algunas de las áreas de aplicación haciendo clic en las tarjetas.</p>
+            <h2 class="section-title">Un Universo de Aplicaciones del Aprendizaje Automático</h2>
+            <p class="section-intro">El Aprendizaje Automático no es una disciplina teórica aislada; es una fuerza impulsora detrás de innumerables tecnologías que utilizamos diariamente. Desde sistemas que entienden nuestro lenguaje hasta vehículos autónomos, el ML está transformando industrias enteras y mejorando nuestra vida. Explora algunas de las aplicaciones más destacadas haciendo clic en las tarjetas para descubrir más detalles.</p>
             <div id="app-grid" class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
         </section>
 
         <section id="classification" class="py-20 px-6 bg-white">
             <h2 class="section-title">¿Cómo se Clasifican los Sistemas de ML?</h2>
-            <p class="section-intro">No todos los sistemas de aprendizaje automático son iguales. Se pueden clasificar según varios criterios clave que definen cómo aprenden y operan. Utiliza las pestañas para explorar estas clasificaciones y entender las diferencias fundamentales entre los distintos tipos de sistemas.</p>
+            <p class="section-intro">Los sistemas de aprendizaje automático se pueden categorizar de diversas maneras, lo que nos ayuda a entender sus principios de funcionamiento y sus casos de uso. Las clasificaciones más comunes se basan en el grado de supervisión durante el entrenamiento, la forma en que el sistema aprende y el mecanismo subyacente de su operación. Utiliza las pestañas a continuación para explorar estas clasificaciones y comprender las distinciones fundamentales.</p>
             <div class="max-w-5xl mx-auto">
                 <div id="tabs-container" class="flex justify-center space-x-2 md:space-x-4 mb-12 flex-wrap gap-y-4">
                     <button data-tab="supervision" class="tab-button active">Por Supervisión</button>
@@ -158,7 +157,7 @@
                 </div>
                 <div id="tabs-content">
                     <div id="supervision-content" class="tab-content">
-                        <p class="text-center text-slate-600 mb-8">Este criterio se refiere a la cantidad y el tipo de guía humana que recibe el algoritmo durante el entrenamiento. Haz clic en las barras del gráfico para ver la descripción de cada tipo.</p>
+                        <p class="text-center text-slate-600 mb-8">Esta clasificación se centra en la cantidad y el tipo de "guía" o "etiquetas" que recibe el algoritmo durante su fase de entrenamiento. Haz clic en las barras del gráfico para ver la descripción detallada de cada tipo.</p>
                         <div class="grid lg:grid-cols-5 gap-8 items-center">
                             <div class="lg:col-span-3">
                                 <div class="chart-container">
@@ -167,31 +166,33 @@
                             </div>
                             <div id="supervision-details" class="lg:col-span-2 p-6 bg-slate-100 rounded-lg min-h-[250px]">
                                 <h4 id="supervision-title" class="text-xl font-bold text-slate-800 mb-2">Selecciona una categoría</h4>
-                                <p id="supervision-text" class="text-slate-600">Haz clic en una de las barras del gráfico para obtener más información sobre ese tipo de aprendizaje.</p>
+                                <p id="supervision-text" class="text-slate-600">Haz clic en una de las barras del gráfico para obtener más información sobre ese tipo de aprendizaje automático y cómo interactúa con la supervisión humana.</p>
                             </div>
                         </div>
                     </div>
                     <div id="learning-mode-content" class="tab-content hidden">
-                         <div class="grid md:grid-cols-2 gap-8">
-                            <div class="p-6 bg-slate-100 rounded-lg">
-                                <h3 class="text-xl font-bold mb-3">Aprendizaje por Lotes (Batch)</h3>
-                                <p class="text-slate-600">El sistema es incapaz de aprender de forma incremental; debe ser entrenado utilizando todos los datos disponibles. Esto se hace fuera de línea. Primero se entrena el modelo y luego se pone en producción, donde se ejecuta sin aprender más. Si se quieren añadir nuevos datos, hay que entrenar una nueva versión del modelo desde cero.</p>
+                        <h3 class="text-center text-2xl font-bold mb-8 text-slate-800">Modos de Aprendizaje</h3>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="p-6 bg-slate-100 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-bold mb-3 text-slate-700">Aprendizaje por Lotes (Batch Learning)</h4>
+                                <p class="text-slate-600">En este modo, el sistema es **incapaz de aprender de forma incremental**. Debe ser **entrenado utilizando todos los datos disponibles a la vez** (el "lote" completo). Este proceso se realiza **fuera de línea**; una vez que el modelo está entrenado, se implementa en producción y no aprende más de los nuevos datos que procesa. Si se desea que el modelo se adapte a nuevos datos, es necesario **re-entrenar una nueva versión del modelo desde cero** con el conjunto de datos completo y actualizado. Este enfoque es común cuando los datos son estáticos o los recursos computacionales son limitados para el aprendizaje continuo.</p>
                             </div>
-                            <div class="p-6 bg-slate-100 rounded-lg">
-                                <h3 class="text-xl font-bold mb-3">Aprendizaje en Línea (Online)</h3>
-                                <p class="text-slate-600">El sistema se entrena de forma incremental alimentándolo con instancias de datos secuencialmente, ya sea individualmente o en pequeños grupos llamados "mini-batches". Cada paso de aprendizaje es rápido y barato. Este método es ideal para sistemas que necesitan adaptarse rápidamente a cambios y para manejar grandes cantidades de datos.</p>
+                            <div class="p-6 bg-slate-100 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-bold mb-3 text-slate-700">Aprendizaje en Línea (Online Learning)</h4>
+                                <p class="text-slate-600">A diferencia del aprendizaje por lotes, el aprendizaje en línea permite que el sistema se entrene de **forma incremental**, alimentándose de instancias de datos secuencialmente, ya sea una a la vez o en pequeños grupos llamados "mini-batches". Cada paso de aprendizaje es generalmente **rápido y eficiente en recursos**, permitiendo que el modelo se adapte rápidamente a los cambios en los datos y aprenda de forma continua. Es ideal para sistemas que necesitan procesar flujos constantes de información (como en la detección de fraudes en tiempo real) y para manejar conjuntos de datos extremadamente grandes que no cabrían en la memoria de un solo equipo.</p>
                             </div>
                         </div>
                     </div>
                     <div id="mechanism-content" class="tab-content hidden">
+                        <h3 class="text-center text-2xl font-bold mb-8 text-slate-800">Mecanismos de Aprendizaje</h3>
                         <div class="grid md:grid-cols-2 gap-8">
-                            <div class="p-6 bg-slate-100 rounded-lg">
-                                <h3 class="text-xl font-bold mb-3">Basado en Instancias</h3>
-                                <p class="text-slate-600">El sistema aprende los ejemplos de memoria y luego generaliza a nuevos casos comparándolos con los ejemplos aprendidos, utilizando una medida de similitud. Por ejemplo, para clasificar un nuevo correo, podría buscar los correos más similares en su base de datos y usar sus etiquetas para predecir la del nuevo.</p>
+                            <div class="p-6 bg-slate-100 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-bold mb-3 text-slate-700">Aprendizaje Basado en Instancias</h4>
+                                <p class="text-slate-600">Los sistemas basados en instancias funcionan aprendiendo los ejemplos de entrenamiento "de memoria". Cuando se les presenta una nueva instancia (un nuevo dato para predecir o clasificar), no construyen un modelo general. En cambio, simplemente la comparan con las instancias que ya han "memorizado" utilizando una **medida de similitud**. Luego, utilizan las etiquetas o resultados de las instancias más similares para hacer su predicción. Por ejemplo, para clasificar un nuevo correo electrónico, un sistema basado en instancias podría buscar los correos electrónicos más parecidos en su base de datos (por ejemplo, correos que contengan palabras o frases similares) y asignar al nuevo correo la misma categoría (spam o no spam) que la mayoría de sus vecinos más cercanos. Este enfoque es sencillo pero puede ser computacionalmente costoso para grandes conjuntos de datos.</p>
                             </div>
-                            <div class="p-6 bg-slate-100 rounded-lg">
-                                <h3 class="text-xl font-bold mb-3">Basado en Modelos</h3>
-                                <p class="text-slate-600">Se construye un modelo a partir de un conjunto de ejemplos de entrenamiento y luego se utiliza ese modelo para hacer predicciones. Este es el enfoque más común. Por ejemplo, un modelo de filtro de spam se entrena para "entender" qué características hacen que un correo sea spam, y luego aplica ese conocimiento para clasificar nuevos correos.</p>
+                            <div class="p-6 bg-slate-100 rounded-lg shadow-sm">
+                                <h4 class="text-xl font-bold mb-3 text-slate-700">Aprendizaje Basado en Modelos</h4>
+                                <p class="text-slate-600">Este es el enfoque más común en el aprendizaje automático. En lugar de memorizar ejemplos, el sistema basado en modelos **construye un modelo generalizable a partir de un conjunto de ejemplos de entrenamiento**. Este modelo es una representación abstracta de los patrones subyacentes en los datos. Una vez que el modelo ha sido entrenado, se utiliza para hacer predicciones sobre nuevas instancias. Por ejemplo, un filtro de spam basado en modelos no solo recuerda correos spam anteriores, sino que entrena un modelo (como un árbol de decisión o una red neuronal) que ha "aprendido" qué características generales (frecuencia de ciertas palabras, estructura del mensaje, etc.) son indicativas de spam. Este modelo luego aplica ese conocimiento generalizado para clasificar correos electrónicos completamente nuevos. El objetivo es que el modelo sea capaz de **generalizar** bien a datos no vistos previamente.</p>
                             </div>
                         </div>
                     </div>
@@ -200,7 +201,10 @@
         </section>
     </main>
 
-   
+    <footer class="bg-slate-900 text-slate-400 text-center py-12 px-6 mt-20">
+        <p class="text-sm">Explorando el vasto mundo del Aprendizaje Automático. Desarrollado con ❤️ y datos.</p>
+        <p class="text-xs mt-2">© 2025 Todos los derechos reservados.</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -208,50 +212,82 @@
                 {
                     title: 'Visión por Computadora',
                     icon: '👁️',
+                    description: 'Permite a las máquinas "ver" e interpretar el mundo visual.',
                     examples: [
-                        '<strong>Clasificación de imágenes:</strong> Analizar imágenes de productos en una línea de producción.',
-                        '<strong>Segmentación de imágenes:</strong> Detectar tumores en escáneres cerebrales, determinando su forma y ubicación exactas.'
+                        '<strong>Clasificación de imágenes:</strong> Identificar el contenido de una imagen, por ejemplo, analizando productos en una línea de producción para control de calidad.',
+                        '<strong>Segmentación de imágenes:</strong> Delimitar objetos o regiones específicas dentro de una imagen, como detectar y localizar tumores con precisión en escáneres cerebrales.',
+                        '<strong>Detección de objetos:</strong> Localizar la presencia de uno o más objetos dentro de una imagen o video, como en sistemas de seguridad o vehículos autónomos.'
                     ]
                 },
                 {
                     title: 'Procesamiento de Lenguaje Natural (NLP)',
                     icon: '📜',
+                    description: 'Capacita a las computadoras para entender, interpretar y generar lenguaje humano.',
                     examples: [
-                        '<strong>Clasificación de texto:</strong> Clasificar automáticamente artículos de noticias o marcar comentarios ofensivos.',
-                        '<strong>Resumen de texto:</strong> Crear resúmenes de documentos largos de forma automática.',
-                        '<strong>Chatbots y Asistentes:</strong> Impulsar la comprensión del lenguaje natural (NLU) y los módulos de preguntas y respuestas.'
+                        '<strong>Clasificación de texto:</strong> Categorizar automáticamente artículos de noticias por tema o marcar comentarios ofensivos en redes sociales.',
+                        '<strong>Resumen de texto:</strong> Generar resúmenes concisos de documentos largos de forma automática.',
+                        '<strong>Traducción automática:</strong> Traducir texto o voz de un idioma a otro en tiempo real.',
+                        '<strong>Chatbots y Asistentes Virtuales:</strong> Impulsar la comprensión del lenguaje natural (NLU) y módulos de preguntas y respuestas para interacciones conversacionales.'
                     ]
                 },
                 {
                     title: 'Análisis Predictivo y Regresión',
                     icon: '📈',
+                    description: 'Se enfoca en predecir valores continuos o futuros basados en datos históricos.',
                     examples: [
-                        '<strong>Previsión de ingresos:</strong> Estimar los ingresos de una empresa para el próximo año basándose en métricas de rendimiento.',
-                        '<strong>Análisis de secuencias:</strong> Utilizar RNNs o Transformers para tener en cuenta secuencias de métricas pasadas.'
+                        '<strong>Previsión de ingresos:</strong> Estimar los ingresos futuros de una empresa basándose en métricas de rendimiento pasadas y tendencias del mercado.',
+                        '<strong>Predicción de precios:</strong> Estimar el precio de una vivienda o una acción en el futuro.',
+                        '<strong>Análisis de secuencias:</strong> Utilizar modelos como Redes Neuronales Recurrentes (RNNs) o Transformers para tener en cuenta secuencias temporales de métricas pasadas y predecir la siguiente.'
                     ]
                 },
                 {
                     title: 'Detección de Anomalías',
                     icon: '⚠️',
+                    description: 'Identifica eventos o datos que se desvían significativamente de la norma.',
                     examples: [
-                        '<strong>Detección de fraude:</strong> Identificar transacciones fraudulentas con tarjetas de crédito.',
-                        '<strong>Técnicas:</strong> Se pueden usar Isolation Forests, Modelos de Mezcla Gaussiana o Autoencoders.'
+                        '<strong>Detección de fraude:</strong> Identificar transacciones fraudulentas con tarjetas de crédito que no se ajustan al patrón de gasto habitual de un usuario.',
+                        '<strong>Monitoreo de sistemas:</strong> Detectar comportamientos inusuales en redes informáticas que podrían indicar un ataque cibernético.',
+                        '<strong>Técnicas Comunes:</strong> Se pueden usar algoritmos como Isolation Forests, Modelos de Mezcla Gaussiana o Autoencoders para identificar estas desviaciones.'
                     ]
                 },
                 {
                     title: 'Segmentación y Agrupamiento',
                     icon: '🧩',
+                    description: 'Descubre estructuras ocultas en datos no etiquetados, agrupando elementos similares.',
                     examples: [
-                        '<strong>Segmentación de clientes:</strong> Agrupar clientes según sus compras para diseñar estrategias de marketing específicas.',
-                        '<strong>Técnicas:</strong> Se pueden lograr con k-means, DBSCAN y otros algoritmos de clustering.'
+                        '<strong>Segmentación de clientes:</strong> Agrupar clientes en base a sus patrones de compra, demografía o comportamiento para diseñar estrategias de marketing personalizadas.',
+                        '<strong>Análisis de mercado:</strong> Identificar segmentos de mercado distintos para un producto.',
+                        '<strong>Reducción de dimensionalidad:</strong> Simplificar conjuntos de datos complejos para facilitar su análisis.',
+                        '<strong>Técnicas Comunes:</strong> Se pueden lograr con algoritmos como k-means, DBSCAN y otros métodos de clustering que organizan los datos en grupos coherentes.'
+                    ]
+                },
+                {
+                    title: 'Sistemas de Recomendación',
+                    icon: '👍',
+                    description: 'Sugieren productos, películas o contenido a los usuarios basándose en sus preferencias.',
+                    examples: [
+                        '<strong>Plataformas de streaming:</strong> Recomendar películas o series en Netflix basadas en tu historial de visualización y el de usuarios similares.',
+                        '<strong>Comercio electrónico:</strong> Sugerir productos en Amazon que podrían interesarte, aumentando las ventas y la satisfacción del cliente.'
                     ]
                 },
                 {
                     title: 'Aprendizaje por Refuerzo (RL)',
                     icon: '🎮',
+                    description: 'Permite a los agentes aprender a tomar decisiones en un entorno para maximizar una recompensa.',
                     examples: [
-                        '<strong>Bots para juegos:</strong> Construir un agente inteligente para un juego, como el famoso AlphaGo que venció al campeón mundial de Go.',
-                        '<strong>Mecanismo:</strong> El agente aprende a tomar acciones que maximizan sus recompensas a lo largo del tiempo.'
+                        '<strong>Bots para juegos:</strong> Construir un agente inteligente capaz de jugar y ganar en juegos complejos, como el famoso AlphaGo que venció al campeón mundial de Go.',
+                        '<strong>Robótica:</strong> Enseñar a un robot a realizar tareas complejas en un entorno físico, como manipular objetos o navegar por un espacio.',
+                        '<strong>Mecanismo Clave:</strong> El agente aprende a tomar acciones que maximizan sus recompensas a lo largo del tiempo, explorando y explotando su entorno.'
+                    ]
+                },
+                {
+                    title: 'Generación de Contenido',
+                    icon: '✍️',
+                    description: 'Creación automática de texto, imágenes o música que parece humano.',
+                    examples: [
+                        '<strong>Generación de texto:</strong> Redactar artículos de noticias, resúmenes o incluso poesía.',
+                        '<strong>Creación de imágenes:</strong> Generar imágenes realistas a partir de descripciones textuales o modificar imágenes existentes.',
+                        '<strong>Composición musical:</strong> Crear piezas musicales originales.'
                     ]
                 }
             ];
@@ -259,14 +295,18 @@
             const appGrid = document.getElementById('app-grid');
             appData.forEach(app => {
                 const card = document.createElement('div');
-                card.className = 'card p-6 cursor-pointer';
+                card.className = 'card p-6 cursor-pointer border border-slate-200 hover:border-teal-400';
                 card.innerHTML = `
                     <div class="flex items-center justify-between">
                         <h3 class="text-xl font-bold text-slate-800">${app.title}</h3>
                         <span class="text-4xl">${app.icon}</span>
                     </div>
-                    <div class="app-details hidden mt-4 text-slate-600 space-y-2">
-                        ${app.examples.map(ex => `<p class="text-sm">${ex}</p>`).join('')}
+                    <p class="text-sm text-slate-500 mt-2">${app.description}</p>
+                    <div class="app-details hidden mt-4 text-slate-600 space-y-2 border-t border-slate-200 pt-4">
+                        <h4 class="font-semibold text-slate-700">Ejemplos:</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            ${app.examples.map(ex => `<li class="text-sm">${ex}</li>`).join('')}
+                        </ul>
                     </div>
                 `;
                 appGrid.appendChild(card);
@@ -281,7 +321,7 @@
                 if (e.target.tagName === 'BUTTON') {
                     const tabName = e.target.dataset.tab;
                     tabsContainer.querySelector('.active').classList.remove('active');
-e.target.classList.add('active');
+                    e.target.classList.add('active');
                     tabContents.forEach(content => {
                         content.classList.add('hidden');
                         if (content.id === `${tabName}-content`) {
@@ -294,23 +334,23 @@ e.target.classList.add('active');
             const supervisionData = {
                 'Supervisado': {
                     level: 100,
-                    text: 'El conjunto de datos de entrenamiento que se le proporciona al algoritmo incluye las soluciones deseadas, llamadas "etiquetas". Es como aprender con un profesor que te da las respuestas.'
+                    text: 'En el **aprendizaje supervisado**, el conjunto de datos de entrenamiento que se le proporciona al algoritmo incluye las **soluciones deseadas**, conocidas como "etiquetas". Es como aprender con un profesor que te da ejemplos de preguntas con sus respuestas correctas. El objetivo es que el modelo aprenda a mapear entradas a salidas basándose en estos ejemplos. Comúnmente utilizado para tareas de clasificación (p.ej., identificar spam) y regresión (p.ej., predecir precios de viviendas).'
                 },
                 'Semi-supervisado': {
                     level: 60,
-                    text: 'Se utiliza cuando se tienen muchos datos, pero solo una pequeña parte está etiquetada. El sistema aprende de los datos etiquetados y utiliza los no etiquetados para mejorar.'
+                    text: 'El **aprendizaje semi-supervisado** se utiliza cuando se dispone de un gran volumen de datos, pero solo una pequeña porción de ellos está etiquetada. El sistema aprovecha tanto los datos etiquetados como los no etiquetados. A menudo, los modelos semi-supervisados comienzan aprendiendo patrones de los datos etiquetados y luego usan esa comprensión para "pseudo-etiquetar" o inferir etiquetas para los datos no etiquetados, mejorando así su rendimiento general.'
                 },
                 'Auto-supervisado': {
                     level: 40,
-                    text: 'El sistema genera automáticamente las etiquetas a partir de los propios datos. Por ejemplo, puede predecir una parte de una imagen basándose en el resto, generando así su propia supervisión.'
+                    text: 'En el **aprendizaje auto-supervisado**, el sistema genera automáticamente las etiquetas o señales de supervisión a partir de los propios datos de entrada. No requiere etiquetas manuales externas. Un ejemplo clásico es cuando el modelo se entrena para predecir una parte de una imagen (como un pixel o una sección) basándose en el resto de la imagen, o para predecir la siguiente palabra en una frase. Esto permite entrenar modelos muy grandes en grandes cantidades de datos no etiquetados.'
                 },
                 'No Supervisado': {
                     level: 10,
-                    text: 'El conjunto de datos de entrenamiento no está etiquetado. El sistema intenta aprender sin un profesor, descubriendo patrones y estructuras ocultas por sí mismo (ej. clustering).'
+                    text: 'El **aprendizaje no supervisado** ocurre cuando el conjunto de datos de entrenamiento no está etiquetado. El sistema no recibe ninguna "solución" o guía explícita. En cambio, su objetivo es descubrir patrones, estructuras o relaciones ocultas dentro de los datos por sí mismo. Ejemplos incluyen el **clustering** (agrupar datos similares, como segmentar clientes) y la **reducción de dimensionalidad** (simplificar los datos manteniendo su información esencial).'
                 },
                 'Por Refuerzo': {
                     level: 25,
-                    text: 'El sistema de aprendizaje, llamado "agente", observa el entorno, selecciona y realiza acciones, y a cambio recibe recompensas o penalizaciones. Debe aprender por sí mismo cuál es la mejor estrategia, llamada "política", para obtener la mayor recompensa a lo largo del tiempo.'
+                    text: 'El **aprendizaje por refuerzo (RL)** es un tipo de aprendizaje donde un "agente" de software o un robot aprende a realizar la mejor secuencia de acciones en un entorno dinámico para maximizar una "recompensa". El agente observa el entorno, realiza una acción y, a cambio, recibe una recompensa (positiva) o una penalización (negativa). No se le dicen las "respuestas correctas", sino que aprende por ensayo y error cuál es la "política" óptima (la estrategia de toma de decisiones) para lograr su objetivo. Es la base de sistemas que juegan juegos complejos, controlan robots o gestionan recursos de forma autónoma.'
                 }
             };
 
@@ -325,11 +365,11 @@ e.target.classList.add('active');
                         label: 'Nivel de Guía Humana (Conceptual)',
                         data: Object.values(supervisionData).map(d => d.level),
                         backgroundColor: [
-                            'rgba(15, 118, 110, 0.6)',
-                            'rgba(13, 148, 136, 0.6)',
-                            'rgba(20, 184, 166, 0.6)',
-                            'rgba(45, 212, 191, 0.6)',
-                            'rgba(153, 226, 217, 0.6)'
+                            'rgba(15, 118, 110, 0.7)',
+                            'rgba(13, 148, 136, 0.7)',
+                            'rgba(20, 184, 166, 0.7)',
+                            'rgba(45, 212, 191, 0.7)',
+                            'rgba(153, 226, 217, 0.7)'
                         ],
                         borderColor: [
                             'rgba(15, 118, 110, 1)',
@@ -351,6 +391,17 @@ e.target.classList.add('active');
                             title: {
                                 display: true,
                                 text: 'Nivel de Guía Humana (Conceptual)'
+                            },
+                            max: 100, // Escala de 0 a 100 para un concepto de "nivel"
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
                             }
                         }
                     },
@@ -359,7 +410,22 @@ e.target.classList.add('active');
                             display: false
                         },
                         tooltip: {
-                            enabled: true
+                            enabled: true,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + '%';
+                                    }
+                                    return label;
+                                },
+                                afterLabel: function(context) {
+                                    return supervisionData[context.label].text;
+                                }
+                            }
                         }
                     },
                     onClick: (event, elements) => {
@@ -375,252 +441,5 @@ e.target.classList.add('active');
             });
         });
     </script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#4F46E5', // Un tono de índigo más vibrante
-                        secondary: '#6366F1', // Un tono de índigo ligeramente más claro
-                        accent: '#EC4899', // Un rosa para acentos
-                        darkText: '#1F2937',
-                        lightText: '#4B5563',
-                        lightBg: '#F9FAFB', // Fondo muy claro
-                        cardBg: '#FFFFFF',
-                    },
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: theme('colors.lightBg');
-            color: theme('colors.lightText');
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1000px; /* Aumentar ligeramente el ancho máximo */
-        }
-        h1, h2, h3 {
-            color: theme('colors.darkText');
-            font-weight: 700; /* Más negrita para los encabezados */
-        }
-        h1 {
-            font-size: 2.5rem; /* Aumentar tamaño del título principal */
-            line-height: 1.2;
-        }
-        h2 {
-            font-size: 2rem;
-            border-bottom: 2px solid theme('colors.primary'); /* Subrayado sutil */
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .section-card {
-            background-color: theme('colors.cardBg');
-            border-radius: 1rem; /* Más redondeado */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra más pronunciada */
-            padding: 2rem; /* Más padding */
-            margin-bottom: 2rem; /* Más espacio entre secciones */
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición para hover */
-        }
-        .section-card:hover {
-            transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .list-item {
-            margin-bottom: 0.75rem; /* Más espacio entre elementos de lista */
-            line-height: 1.5;
-        }
-        .list-item strong {
-            color: theme('colors.darkText');
-        }
-        a {
-            color: theme('colors.primary');
-            text-decoration: none;
-            transition: color 0.2s ease-in-out;
-        }
-        a:hover {
-            color: theme('colors.accent');
-            text-decoration: underline;
-        }
-    </style>
-    <div class="container mx-auto">
-        <header class="text-center mb-10 p-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg shadow-lg">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tight">
-                Conceptos Clave del Aprendizaje Automático
-            </h1>
-            <p class="text-xl sm:text-2xl text-indigo-100 font-light">
-                Ampliando los elementos esenciales con ejemplos directos del PDF.
-            </p>
-        </header>
-
-        <!-- Definición de Aprendizaje Automático -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Definición de Aprendizaje Automático
-            </h2>
-            <p class="mb-4 text-lightText">
-                El Aprendizaje Automático (ML) permite a las computadoras aprender sin ser programadas explícitamente. Se define como:
-                "Un programa de computadora aprende de la experiencia $E$ con respecto a alguna tarea $T$ y alguna medida de rendimiento $P$, si su rendimiento en $T$, medido por $P$, mejora con la experiencia $E$."
-            </p>
-            <h3 class="text-darkText">Ejemplo del Filtro de Spam:</h3>
-            <ul class="list-disc pl-5 text-lightText">
-                <li class="list-item"><strong>Tarea (T):</strong> Marcar correos electrónicos como spam.</li>
-                <li class="list-item"><strong>Experiencia (E):</strong> El conjunto de datos de entrenamiento (ejemplos de spam y "ham" o no-spam).</li>
-                <li class="list-item"><strong>Medida de Rendimiento (P):</strong> La proporción de correos electrónicos clasificados correctamente (precisión).</li>
-            </ul>
-            <p class="mt-4 text-lightText">
-                <strong>Ejemplo de Wikipedia (No ML):</strong> Si solo descargas todos los artículos de Wikipedia, tu computadora tiene más datos, pero no es "más inteligente" en ninguna tarea específica; esto no es aprendizaje automático.
-            </p>
-        </section>
-
-        <!-- Evolución y Aplicaciones del ML -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Evolución y Aplicaciones del ML
-            </h2>
-            <p class="mb-4 text-lightText">
-                El ML tiene una rica historia y se aplica en diversos campos:
-            </p>
-            <h3 class="text-darkText">Aplicaciones Tempranas:</h3>
-            <ul class="list-disc pl-5 text-lightText">
-                <li class="list-item">Reconocimiento óptico de caracteres (OCR).</li>
-                <li class="list-item">Filtro de spam (años 90).</li>
-            </ul>
-            <h3 class="text-darkText">Aplicaciones Modernas Cotidianas:</h3>
-            <ul class="list-disc pl-5 text-lightText">
-                <li class="list-item">Indicaciones de voz.</li>
-                <li class="list-item">Traducción automática.</li>
-                <li class="list-item">Búsqueda de imágenes.</li>
-                <li class="list-item">Recomendaciones de productos.</li>
-            </ul>
-            <h3 class="text-darkText">Chatbots de Última Generación:</h3>
-            <ul class="list-disc pl-5 text-lightText">
-                <li class="list-item">ChatGPT, Gemini (anteriormente Bard), Claude, Perplexity, donde la IA es el servicio principal.</li>
-            </ul>
-        </section>
-
-        <!-- Ejemplos Específicos de Tareas y Técnicas -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Ejemplos Específicos de Tareas y Técnicas (del PDF)
-            </h2>
-            <ul class="list-disc pl-5 text-lightText">
-                <li class="list-item"><strong>Clasificación de imágenes de productos:</strong> Clasificación de imágenes, usando Redes Neuronales Convolucionales (CNNs) o Transformers de visión.</li>
-                <li class="list-item"><strong>Detección de tumores en escáneres cerebrales:</strong> Segmentación semántica de imágenes, usando CNNs o Transformers de visión.</li>
-                <li class="list-item"><strong>Clasificación automática de artículos de noticias:</strong> Procesamiento del Lenguaje Natural (NLP), clasificación de texto, usando Redes Neuronales Recurrentes (RNNs), CNNs o Transformers.</li>
-                <li class="list-item"><strong>Marcado automático de comentarios ofensivos:</strong> Clasificación de texto (NLP).</li>
-                <li class="list-item"><strong>Resumen automático de documentos largos:</strong> Resumen de texto (NLP).</li>
-                <li class="list-item"><strong>Estimación del riesgo genético de una enfermedad:</strong> Análisis de secuencias de ADN largas, usando Modelos de Espacio de Estados (SSMs).</li>
-                <li class="list-item"><strong>Creación de un chatbot o asistente personal:</strong> Componentes de NLP, incluyendo comprensión del lenguaje natural (NLU) y módulos de preguntas y respuestas.</li>
-                <li class="list-item"><strong>Previsión de ingresos de la empresa:</strong> Tarea de regresión (predicción de valores), usando modelos de regresión lineal, polinómica, SVM de regresión, Random Forest de regresión o Redes Neuronales Artificiales (ANNs). Para secuencias, RNNs, CNNs o Transformers.</li>
-                <li class="list-item"><strong>Reacción de una aplicación a comandos de voz:</strong> Reconocimiento de voz, procesando muestras de audio con RNNs, CNNs o Transformers.</li>
-                <li class="list-item"><strong>Detección de fraude con tarjetas de crédito:</strong> Detección de anomalías, usando Isolation Forests, Modelos de Mezcla Gaussiana o Autoencoders.</li>
-                <li class="list-item"><strong>Segmentación de clientes por compras:</strong> Agrupamiento (clustering), usando k-means o DBSCAN.</li>
-                <li class="list-item"><strong>Representación de conjuntos de datos de alta dimensión:</strong> Visualización de datos, usando técnicas de reducción de dimensionalidad.</li>
-                <li class="list-item"><strong>Sistemas de recomendación de productos:</strong> Usando Redes Neuronales Artificiales entrenadas en secuencias de compras.</li>
-                <li class="list-item"><strong>Construcción de un bot inteligente para un juego:</strong> Aprendizaje por Refuerzo (RL), entrenando agentes para maximizar recompensas (ej. AlphaGo).</li>
-            </ul>
-        </section>
-
-        <!-- Ventajas del ML sobre la Programación Tradicional -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Ventajas del ML sobre la Programación Tradicional
-            </h2>
-            <h3 class="text-darkText">Mantenimiento del Filtro de Spam:</h3>
-            <ul class="list-disc pl-5 mb-4 text-lightText">
-                <li class="list-item"><strong>Enfoque Tradicional:</strong> Requiere una lista larga y compleja de reglas (ej. "4U", "crédito", "gratis"). Si los spammers cambian a "For U", el programador debe actualizar manualmente las reglas.</li>
-                <li class="list-item"><strong>Enfoque de ML:</strong> El sistema aprende automáticamente qué palabras y frases son buenos predictores de spam. Si "For U" se vuelve frecuente en el spam marcado por los usuarios, el sistema lo detecta y lo marca sin intervención manual, adaptándose automáticamente a los cambios.</li>
-            </ul>
-            <h3 class="text-darkText">Problemas Demasiado Complejos:</h3>
-            <p class="mb-4 text-lightText">
-                El reconocimiento de voz es un ejemplo clave. Es inviable escribir reglas para miles de palabras, millones de personas, entornos ruidosos y docenas de idiomas. El ML permite que el algoritmo aprenda por sí mismo a partir de ejemplos.
-            </p>
-            <h3 class="text-darkText">Ayuda a los Humanos a Aprender (Minería de Datos):</h3>
-            <p class="text-lightText">
-                Un filtro de spam entrenado puede revelar palabras o combinaciones de palabras que considera los mejores predictores de spam, descubriendo correlaciones inesperadas o nuevas tendencias, lo que lleva a una mejor comprensión del problema.
-            </p>
-        </section>
-
-        <!-- Clasificación de Sistemas de ML -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Clasificación de Sistemas de ML
-            </h2>
-            <h3 class="text-darkText">Ejemplo de Filtro de Spam (Combinación de Criterios):</h3>
-            <p class="mb-4 text-lightText">
-                Un filtro de spam de última generación puede ser un sistema de aprendizaje supervisado (entrenado con ejemplos de spam y ham proporcionados por humanos), basado en modelos (utilizando una red neuronal profunda) y en línea (aprende sobre la marcha).
-            </p>
-            <h3 class="text-darkText">Aprendizaje Supervisado:</h3>
-            <p class="text-lightText">
-                En el aprendizaje supervisado, el conjunto de entrenamiento incluye las soluciones deseadas, llamadas etiquetas (por ejemplo, un correo electrónico se etiqueta como "spam" o "ham").
-            </p>
-        </section>
-
-        <!-- Conceptos Fundamentales y Terminología -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Conceptos Fundamentales y Terminología
-            </h2>
-            <ul class="list-disc pl-5 text-lightText">
-                <li class="list-item"><strong>Conjunto de Entrenamiento:</strong> Los ejemplos que el sistema utiliza para aprender (ej. correos electrónicos marcados como spam/ham).</li>
-                <li class="list-item"><strong>Instancia de Entrenamiento (o Muestra):</strong> Cada ejemplo individual en el conjunto de entrenamiento.</li>
-                <li class="list-item"><strong>Modelo:</strong> La parte del sistema de ML que aprende y hace predicciones (ej. redes neuronales, random forests).</li>
-                <li class="list-item"><strong>Etiquetas:</strong> Las soluciones deseadas en el aprendizaje supervisado (ej. "spam", "ham").</li>
-                <li class="list-item"><strong>Precisión:</strong> Una medida de rendimiento común en tareas de clasificación, que es la proporción de elementos clasificados correctamente.</li>
-            </ul>
-        </section>
-
-        <!-- Flujo de Trabajo de un Proyecto de ML -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Flujo de Trabajo de un Proyecto de ML
-            </h2>
-            <p class="mb-4 text-lightText">El PDF ilustra un flujo de trabajo iterativo:</p>
-            <ol class="list-decimal pl-5 text-lightText">
-                <li class="list-item">Estudiar el problema.</li>
-                <li class="list-item">Entrenar el modelo de ML (usando datos).</li>
-                <li class="list-item">Evaluar el modelo.</li>
-                <li class="list-item">Analizar errores.</li>
-                <li class="list-item">Actualizar datos (si es necesario).</li>
-                <li class="list-item">Lanzar.</li>
-                <li class="list-item">Inspeccionar la solución (para obtener información).</li>
-                <li class="list-item">Repetir si es necesario (el ciclo de mejora continua).</li>
-            </ol>
-        </section>
-
-        <!-- Guía para Ampliar la Información -->
-        <section class="section-card">
-            <h2 class="text-primary">
-                Guía para Ampliar la Información
-            </h2>
-            <p class="mb-4 text-lightText">Para profundizar en estos conceptos, te sugiero lo siguiente:</p>
-            <ul class="list-disc pl-5 text-lightText">
-                <li class="list-item"><strong>Revisar el PDF Original:</strong> El Capítulo 1 del PDF es una excelente base. Presta atención a las figuras (1-1, 1-2, 1-3, 1-4) que visualizan los flujos de trabajo y las ventajas del ML.</li>
-                <li class="list-item"><strong>Investigar Tipos de ML:</strong> Busca más información sobre cada tipo de aprendizaje mencionado (supervisado, no supervisado, semi-supervisado, auto-supervisado, por refuerzo, en línea, por lotes, basado en instancias, basado en modelos). Comprender las diferencias es fundamental.</li>
-                <li class="list-item"><strong>Explorar Aplicaciones Específicas:</strong> Si alguna de las aplicaciones listadas te llama la atención (ej. detección de fraude, reconocimiento de voz), investiga cómo funcionan los algoritmos específicos mencionados (CNNs, RNNs, Transformers, k-means, etc.).</li>
-                <li class="list-item"><strong>Conceptos de Evaluación:</strong> El PDF menciona la "precisión" como una medida de rendimiento. Investiga otras métricas de evaluación importantes en ML (recall, F1-score, AUC-ROC, MSE, etc.) para comprender cómo se mide el éxito de un modelo.</li>
-                <li class="list-item"><strong>Recursos Adicionales:</strong> El PDF menciona un repositorio de GitHub (<a href="https://github.com/ageron/handson-mlp" target="_blank" class="text-primary hover:text-accent">https://github.com/ageron/handson-mlp</a>). Explorar este recurso puede darte acceso a código y ejemplos prácticos relacionados con el libro.</li>
-            </ul>
-        </section>
-
-    </div>
-
-     <footer class="bg-slate-900 text-center py-8 px-6">
-        <p class="text-slate-400">Aplicación interactiva creada para explorar los conceptos de "Hands-On Machine Learning".</p>
-    </footer>
-
 </body>
 </html>
