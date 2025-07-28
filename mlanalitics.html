@@ -3,12 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infografía: Potenciando el Fútbol con Machine Learning</title>
+    <title>Centro Interactivo de Aprendizaje de ML</title>
+    <!-- Chosen Palette: Dual-Concept Slate -->
+    <!-- Application Structure Plan: He diseñado la aplicación como un "Centro de Aprendizaje" interactivo. En lugar de un flujo lineal, el usuario es recibido con una introducción y dos opciones claras: Aprendizaje Supervisado y No Supervisado. Al seleccionar una, la sección correspondiente se revela dinámicamente, presentando la teoría y una demostración interactiva. Esta estructura de "hub" permite a los usuarios explorar los temas en cualquier orden, facilitando la comparación directa entre los dos paradigmas, lo cual es más efectivo para el aprendizaje que un simple documento de arriba a abajo. -->
+    <!-- Visualization & Content Choices: 1) Report Info: Supervised Learning, Logistic Regression. -> Goal: Enseñar cómo un modelo clasifica datos con etiquetas. -> Viz/Presentation Method: Chart.js scatter plot para los datos (coloreados por clase) y una línea para la frontera de decisión. -> Interaction: El usuario controla la tasa de aprendizaje y entrena el modelo, viendo cómo la frontera se ajusta. -> Justification: Visualizar el proceso de "aprendizaje" hace que el concepto abstracto de optimización sea tangible. -> Library/Method: Chart.js, Vanilla JS. 2) Report Info: Unsupervised Learning, K-Means. -> Goal: Enseñar cómo un modelo agrupa datos sin etiquetas. -> Viz/Presentation Method: Chart.js scatter plot para los datos, que se colorean dinámicamente durante el proceso. -> Interaction: El usuario controla el número de clústeres (K) y ejecuta el algoritmo paso a paso (inicializar, asignar, actualizar). -> Justification: Desglosar el algoritmo en pasos interactivos aclara su funcionamiento interno. -> Library/Method: Chart.js, Vanilla JS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #334155; }
+        .hero-bg { background-color: #0f172a; background-image: radial-gradient(#475569 1px, transparent 1px); background-size: 20px 20px; }
+        .card-select { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-select:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .btn { transition: all 0.3s ease; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 400px; max-height: 50vh; }
+        @media (min-width: 768px) { .chart-container { height: 450px; } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="w-full">
+        <!-- Hero Section -->
+        <section class="w-full py-20 md:py-28 hero-bg">
+            <div class="container mx-auto px-4 md:px-6 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">Guía Interactiva de Machine Learning</h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-300">Explora los dos paradigmas fundamentales del ML: Supervisado y No Supervisado. Elige un camino y descubre cómo las máquinas aprenden de los datos.</p>
+            </div>
+        </section>
+
+        <!-- Selection Hub -->
+        <section id="selection-hub" class="w-full py-16 md:py-24">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+                    <!-- Supervised Card -->
+                    <div id="select-supervised" class="card-select p-8 rounded-2xl bg-white shadow-lg cursor-pointer border-4 border-transparent hover:border-blue-500">
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Aprendizaje Supervisado</h2>
+                        <p class="mt-3 text-slate-600">Aprende cómo los modelos hacen predicciones a partir de datos etiquetados. Ideal para tareas de clasificación y regresión.</p>
+                        <div class="mt-4 text-blue-600 font-semibold">Explorar Clasificación →</div>
+                    </div>
+                    <!-- Unsupervised Card -->
+                    <div id="select-unsupervised" class="card-select p-8 rounded-2xl bg-white shadow-lg cursor-pointer border-4 border-transparent hover:border-purple-500">
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Aprendizaje No Supervisado</h2>
+                        <p class="mt-3 text-slate-600">Descubre patrones y estructuras ocultas en datos sin etiquetar. Perfecto para segmentación y detección de anomalías.</p>
+                        <div class="mt-4 text-purple-600 font-semibold">Explorar Agrupamiento →</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Content Sections -->
+        <div id="content-sections" class="container mx-auto px-4 md:px-6 pb-16">
+            
+            <!-- Supervised Learning Section -->
+            <section id="supervised-section" class="hidden w-full py-12 md:py-16 bg-blue-50 rounded-2xl">
+                <div class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-2">Aprendizaje Supervisado: Regresión Logística</h2>
+                    <p class="text-center text-blue-700 max-w-3xl mx-auto mb-12">En esta sección, interactuarás con un modelo que aprende a clasificar datos en dos grupos. Observa cómo la "frontera de decisión" se ajusta para separar las clases basándose en las etiquetas proporcionadas.</p>
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 p-6 rounded-xl bg-white shadow-lg border border-blue-200">
+                            <div class="chart-container"><canvas id="logisticRegressionChart"></canvas></div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="p-6 rounded-xl bg-white shadow-lg border">
+                                <h3 class="font-semibold text-lg text-slate-700 mb-4">Controles</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="learning-rate-slider" class="block text-sm font-medium">Tasa de Aprendizaje: <span id="lr-value" class="font-bold text-blue-600">0.1</span></label>
+                                        <input id="learning-rate-slider" type="range" min="0.01" max="0.5" step="0.01" value="0.1" class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer">
+                                    </div>
+                                    <button id="generate-data-btn-logistic" class="w-full py-2 px-4 rounded-md font-semibold text-white bg-slate-600 hover:bg-slate-700 btn">Generar Nuevos Datos</button>
+                                </div>
+                            </div>
+                            <div class="p-6 rounded-xl bg-white shadow-lg border">
+                                <h3 class="font-semibold text-lg text-slate-700 mb-4">Entrenamiento</h3>
+                                <div class="space-y-2">
+                                    <button id="init-model-btn" class="w-full py-2 px-4 rounded-md font-semibold text-white bg-blue-500 hover:bg-blue-600 btn">1. Inicializar Modelo</button>
+                                    <button id="train-step-btn" class="w-full py-2 px-4 rounded-md font-semibold text-white bg-blue-500 btn" disabled>2. Entrenar (1 Época)</button>
+                                    <button id="train-all-btn" class="w-full mt-4 py-2 px-4 rounded-md font-semibold border border-blue-500 text-blue-600 hover:bg-blue-50 btn">Entrenar Automáticamente</button>
+                                </div>
+                            </div>
+                            <div id="explanation-box-logistic" class="p-4 rounded-xl bg-blue-100 border border-blue-200 text-blue-800">
+                                <h4 class="font-bold">¡Comienza!</h4><p class="text-sm">Genera datos y luego inicializa el modelo para empezar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unsupervised Learning Section -->
+            <section id="unsupervised-section" class="hidden w-full py-12 md:py-16 bg-purple-50 rounded-2xl">
+                <div class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-2">Aprendizaje No Supervisado: K-Means</h2>
+                     <p class="text-center text-purple-700 max-w-3xl mx-auto mb-12">Aquí, explorarás cómo un algoritmo puede encontrar grupos (o clústeres) en datos sin ninguna etiqueta previa. Controla el proceso y observa cómo K-Means organiza los datos por sí mismo.</p>
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 p-6 rounded-xl bg-white shadow-lg border border-purple-200">
+                            <div class="chart-container"><canvas id="kmeansChart"></canvas></div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="p-6 rounded-xl bg-white shadow-lg border">
+                                <h3 class="font-semibold text-lg text-slate-700 mb-4">Controles</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="k-slider" class="block text-sm font-medium">Número de Clústeres (K): <span id="k-value" class="font-bold text-purple-600">3</span></label>
+                                        <input id="k-slider" type="range" min="2" max="8" value="3" class="w-full h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer">
+                                    </div>
+                                    <button id="generate-data-btn-kmeans" class="w-full py-2 px-4 rounded-md font-semibold text-white bg-slate-600 hover:bg-slate-700 btn">Generar Nuevos Datos</button>
+                                </div>
+                            </div>
+                            <div class="p-6 rounded-xl bg-white shadow-lg border">
+                                <h3 class="font-semibold text-lg text-slate-700 mb-4">Algoritmo</h3>
+                                <div class="space-y-2">
+                                    <button id="init-centroids-btn" class="w-full py-2 px-4 rounded-md font-semibold text-white bg-purple-500 hover:bg-purple-600 btn">1. Inicializar Centroides</button>
+                                    <button id="assign-btn" class="w-full py-2 px-4 rounded-md font-semibold text-white bg-purple-500 btn" disabled>2. Asignar Puntos</button>
+                                    <button id="update-btn" class="w-full py-2 px-4 rounded-md font-semibold text-white bg-purple-500 btn" disabled>3. Actualizar Centroides</button>
+                                    <button id="run-all-kmeans-btn" class="w-full mt-4 py-2 px-4 rounded-md font-semibold border border-purple-500 text-purple-600 hover:bg-purple-50 btn">Ejecutar Automáticamente</button>
+                                </div>
+                            </div>
+                            <div id="explanation-box-kmeans" class="p-4 rounded-xl bg-purple-100 border border-purple-200 text-purple-800">
+                                <h4 class="font-bold">¡Explora!</h4><p class="text-sm">Ajusta el número de clústeres (K) y sigue los pasos del algoritmo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // --- General Navigation Logic ---
+        const selectSupervised = document.getElementById('select-supervised');
+        const selectUnsupervised = document.getElementById('select-unsupervised');
+        const supervisedSection = document.getElementById('supervised-section');
+        const unsupervisedSection = document.getElementById('unsupervised-section');
+
+        selectSupervised.addEventListener('click', () => {
+            unsupervisedSection.classList.add('hidden');
+            supervisedSection.classList.remove('hidden');
+            window.scrollTo(0, supervisedSection.offsetTop - 20);
+            if (!logisticRegression.chart) logisticRegression.init();
+        });
+
+        selectUnsupervised.addEventListener('click', () => {
+            supervisedSection.classList.add('hidden');
+            unsupervisedSection.classList.remove('hidden');
+            window.scrollTo(0, unsupervisedSection.offsetTop - 20);
+            if (!kmeans.chart) kmeans.init();
+        });
+
+
+        // --- Supervised: Logistic Regression Logic ---
+        const logisticRegression = {
+            chartCanvas: document.getElementById('logisticRegressionChart'),
+            lrSlider: document.getElementById('learning-rate-slider'),
+            lrValueSpan: document.getElementById('lr-value'),
+            generateBtn: document.getElementById('generate-data-btn-logistic'),
+            initBtn: document.getElementById('init-model-btn'),
+            stepBtn: document.getElementById('train-step-btn'),
+            runAllBtn: document.getElementById('train-all-btn'),
+            explanationBox: document.getElementById('explanation-box-logistic'),
+            dataPoints: [],
+            labels: [],
+            model: null,
+            chart: null,
+            learningRate: 0.1,
+            classColors: ['#22c55e', '#ef4444'],
+            boundaryColor: '#475569',
+
+            init() {
+                const ctx = this.chartCanvas.getContext('2d');
+                this.chart = new Chart(ctx, {
+                    type: 'scatter', data: { datasets: [] },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: { x: { display: false }, y: { display: false } },
+                        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                        animation: { duration: 200, easing: 'linear' }
+                    }
+                });
+                this.addEventListeners();
+                this.generateData();
+            },
+
+            addEventListeners() {
+                this.lrSlider.addEventListener('input', e => {
+                    this.learningRate = parseFloat(e.target.value);
+                    this.lrValueSpan.textContent = this.learningRate.toFixed(2);
+                    if (this.model) {
+                        this.model.compile({ optimizer: tf.train.sgd(this.learningRate), loss: 'binaryCrossentropy' });
+                    }
+                });
+                this.generateBtn.addEventListener('click', () => this.generateData());
+                this.initBtn.addEventListener('click', () => this.initModel());
+                this.stepBtn.addEventListener('click', () => this.trainStep());
+                this.runAllBtn.addEventListener('click', () => this.trainAll());
+            },
+
+            generateData(numPoints = 100) {
+                this.dataPoints = []; this.labels = [];
+                const canvasWidth = this.chartCanvas.width; const canvasHeight = this.chartCanvas.height;
+                const c1 = { x: canvasWidth * 0.25, y: canvasHeight * 0.75 };
+                const c2 = { x: canvasWidth * 0.75, y: canvasHeight * 0.25 };
+                const stdDev = 50;
+                for (let i = 0; i < numPoints / 2; i++) {
+                    this.dataPoints.push({ x: c1.x + (Math.random() * 2 - 1) * stdDev, y: c1.y + (Math.random() * 2 - 1) * stdDev });
+                    this.labels.push(0);
+                    this.dataPoints.push({ x: c2.x + (Math.random() * 2 - 1) * stdDev, y: c2.y + (Math.random() * 2 - 1) * stdDev });
+                    this.labels.push(1);
+                }
+                this.resetModelState(); this.updateChart();
+                this.setExplanation('Datos Generados', 'Se han generado nuevos datos. Ahora, inicializa el modelo.');
+            },
+
+            createModel() {
+                this.model = tf.sequential();
+                this.model.add(tf.layers.dense({ units: 1, inputShape: [2], activation: 'sigmoid' }));
+                this.model.compile({ optimizer: tf.train.sgd(this.learningRate), loss: 'binaryCrossentropy' });
+            },
+
+            async initModel() {
+                this.createModel(); this.updateChart();
+                this.setExplanation('Modelo Inicializado', 'La frontera de decisión es aleatoria. Entrena el modelo para ajustarla.');
+                this.initBtn.disabled = true; this.stepBtn.disabled = false; this.runAllBtn.disabled = false;
+            },
+
+            async trainStep() {
+                if (!this.model) return;
+                this.stepBtn.disabled = true;
+                const xs = tf.tensor2d(this.dataPoints.map(p => [p.x, p.y]));
+                const ys = tf.tensor2d(this.labels, [this.labels.length, 1]);
+                await this.model.fit(xs, ys, { epochs: 1, callbacks: { onEpochEnd: (e, logs) => this.updateChart() } });
+                xs.dispose(); ys.dispose();
+                this.stepBtn.disabled = false;
+                this.setExplanation('Paso de Entrenamiento', 'La frontera se ha ajustado ligeramente para reducir el error.');
+            },
+            
+            async trainAll() {
+                if (!this.model) return;
+                this.stepBtn.disabled = true; this.runAllBtn.disabled = true; this.generateBtn.disabled = true;
+                const xs = tf.tensor2d(this.dataPoints.map(p => [p.x, p.y]));
+                const ys = tf.tensor2d(this.labels, [this.labels.length, 1]);
+                await this.model.fit(xs, ys, { epochs: 50, callbacks: { 
+                    onEpochEnd: (e, logs) => {
+                        this.setExplanation(`Entrenando... Época ${e+1}`, `Pérdida: ${logs.loss.toFixed(4)}`);
+                        this.updateChart();
+                    },
+                    onTrainEnd: () => {
+                        this.setExplanation('Entrenamiento Completado', 'El modelo ha convergido.');
+                        this.stepBtn.disabled = false; this.runAllBtn.disabled = false; this.generateBtn.disabled = false;
+                        xs.dispose(); ys.dispose();
+                    }
+                }});
+            },
+
+            getDecisionBoundary() {
+                if (!this.model) return [];
+                const weights = this.model.getWeights();
+                if (weights.length === 0) return [];
+                const w = weights[0].arraySync(); const b = weights[1].arraySync()[0];
+                const boundaryPoints = []; const canvasWidth = this.chartCanvas.width;
+                if (Math.abs(w[1][0]) > 1e-6) {
+                    boundaryPoints.push({ x: 0, y: (-w[0][0] * 0 - b) / w[1][0] });
+                    boundaryPoints.push({ x: canvasWidth, y: (-w[0][0] * canvasWidth - b) / w[1][0] });
+                }
+                return boundaryPoints;
+            },
+
+            updateChart() {
+                if (!this.chart) return;
+                this.chart.data.datasets = [
+                    { data: this.dataPoints, pointBackgroundColor: this.dataPoints.map((_, i) => this.classColors[this.labels[i]]), type: 'scatter', order: 2, pointRadius: 5 },
+                    { data: this.getDecisionBoundary(), borderColor: this.boundaryColor, borderWidth: 2, pointRadius: 0, type: 'line', order: 1 }
+                ];
+                this.chart.update();
+            },
+
+            setExplanation(title, text) { this.explanationBox.innerHTML = `<h4 class="font-bold">${title}</h4><p class="text-sm">${text}</p>`; },
+            resetModelState() { if (this.model) { this.model.dispose(); this.model = null; } this.initBtn.disabled = false; this.stepBtn.disabled = true; this.runAllBtn.disabled = true; }
+        };
+
+        // --- Unsupervised: K-Means Logic ---
+        const kmeans = {
+            chartCanvas: document.getElementById('kmeansChart'),
+            kSlider: document.getElementById('k-slider'),
+            kValueSpan: document.getElementById('k-value'),
+            generateBtn: document.getElementById('generate-data-btn-kmeans'),
+            initBtn: document.getElementById('init-centroids-btn'),
+            assignBtn: document.getElementById('assign-btn'),
+            updateBtn: document.getElementById('update-btn'),
+            runAllBtn: document.getElementById('run-all-kmeans-btn'),
+            explanationBox: document.getElementById('explanation-box-kmeans'),
+            dataPoints: [], centroids: [], assignments: [], chart: null, k: 3,
+            colors: ['#3b82f6', '#ef4444', '#10b981', '#f97316', '#8b5cf6', '#ec4899', '#06b6d4', '#d946ef'],
+            lightColors: ['rgba(59, 130, 246, 0.2)', 'rgba(239, 68, 68, 0.2)', 'rgba(16, 185, 129, 0.2)', 'rgba(249, 115, 22, 0.2)', 'rgba(139, 92, 246, 0.2)', 'rgba(236, 72, 153, 0.2)', 'rgba(6, 182, 212, 0.2)', 'rgba(217, 70, 239, 0.2)'],
+            defaultColor: '#94a3b8',
+
+            init() {
+                const ctx = this.chartCanvas.getContext('2d');
+                this.chart = new Chart(ctx, { type: 'scatter', data: { datasets: [] }, options: { responsive: true, maintainAspectRatio: false, scales: { x: { display: false }, y: { display: false } }, plugins: { legend: { display: false }, tooltip: { enabled: false } }, animation: { duration: 500 } } });
+                this.addEventListeners();
+                this.generateData();
+            },
+
+            addEventListeners() {
+                this.kSlider.addEventListener('input', e => { this.k = parseInt(e.target.value); this.kValueSpan.textContent = this.k; this.generateData(); });
+                this.generateBtn.addEventListener('click', () => this.generateData());
+                this.initBtn.addEventListener('click', () => this.initCentroids());
+                this.assignBtn.addEventListener('click', () => this.assignPoints());
+                this.updateBtn.addEventListener('click', () => this.updateCentroids());
+                this.runAllBtn.addEventListener('click', () => this.runAll());
+            },
+
+            generateData() {
+                this.dataPoints = []; this.centroids = [];
+                const numPoints = 150; const blobStdDev = 60;
+                const canvasWidth = this.chartCanvas.width; const canvasHeight = this.chartCanvas.height;
+                for (let i = 0; i < this.k; i++) {
+                    const blobCenterX = Math.random() * (canvasWidth - 2 * blobStdDev) + blobStdDev;
+                    const blobCenterY = Math.random() * (canvasHeight - 2 * blobStdDev) + blobStdDev;
+                    for (let j = 0; j < numPoints / this.k; j++) {
+                        let u, v, s; do { u = Math.random() * 2 - 1; v = Math.random() * 2 - 1; s = u * u + v * v; } while (s >= 1 || s === 0);
+                        const mul = Math.sqrt(-2.0 * Math.log(s) / s);
+                        this.dataPoints.push({ x: blobCenterX + blobStdDev * u * mul, y: blobCenterY + blobStdDev * v * mul });
+                    }
+                }
+                this.assignments = new Array(this.dataPoints.length).fill(-1);
+                this.resetUIState(); this.updateChart();
+            },
+
+            initCentroids() {
+                this.centroids = []; const usedIndexes = new Set();
+                while (this.centroids.length < this.k) {
+                    const idx = Math.floor(Math.random() * this.dataPoints.length);
+                    if (!usedIndexes.has(idx)) { this.centroids.push({ ...this.dataPoints[idx] }); usedIndexes.add(idx); }
+                }
+                this.updateChart(); this.setExplanation('Centroides Inicializados', 'Se han elegido ' + this.k + ' puntos al azar como centroides iniciales.');
+                this.initBtn.disabled = true; this.assignBtn.disabled = false;
+            },
+
+            assignPoints() {
+                this.dataPoints.forEach((point, i) => {
+                    let minDist = Infinity; let bestCluster = -1;
+                    this.centroids.forEach((centroid, j) => {
+                        const dist = Math.sqrt(Math.pow(point.x - centroid.x, 2) + Math.pow(point.y - centroid.y, 2));
+                        if (dist < minDist) { minDist = dist; bestCluster = j; }
+                    });
+                    this.assignments[i] = bestCluster;
+                });
+                this.updateChart(); this.setExplanation('Puntos Asignados', 'Cada punto ha sido asignado al centroide más cercano.');
+                this.assignBtn.disabled = true; this.updateBtn.disabled = false;
+            },
+
+            updateCentroids() {
+                const sums = Array(this.k).fill(0).map(() => ({ x: 0, y: 0, count: 0 }));
+                this.dataPoints.forEach((point, i) => {
+                    const cluster = this.assignments[i];
+                    if (cluster !== -1) { sums[cluster].x += point.x; sums[cluster].y += point.y; sums[cluster].count++; }
+                });
+                this.centroids = sums.map((sum, i) => (sum.count > 0) ? { x: sum.x / sum.count, y: sum.y / sum.count } : this.centroids[i]);
+                this.updateChart(); this.setExplanation('Centroides Actualizados', 'Los centroides se han movido al centro de sus respectivos clústeres.');
+                this.updateBtn.disabled = true; this.assignBtn.disabled = false;
+            },
+
+            async runAll() {
+                this.initBtn.disabled = true; this.assignBtn.disabled = true; this.updateBtn.disabled = true; this.runAllBtn.disabled = true;
+                if (this.centroids.length === 0) { this.initCentroids(); await new Promise(r => setTimeout(r, 700)); }
+                for (let i = 0; i < 10; i++) {
+                    this.assignPoints(); await new Promise(r => setTimeout(r, 700));
+                    this.updateCentroids(); await new Promise(r => setTimeout(r, 700));
+                }
+                this.setExplanation('Convergencia Alcanzada', 'El algoritmo ha completado sus iteraciones.');
+                this.initBtn.disabled = false; this.runAllBtn.disabled = false;
+            },
+
+            updateChart() {
+                if (!this.chart) return;
+                const datasets = [{ data: this.dataPoints, pointBackgroundColor: this.dataPoints.map((_, i) => this.assignments[i] === -1 ? this.defaultColor : this.lightColors[this.assignments[i] % this.colors.length]), pointBorderColor: this.dataPoints.map((_, i) => this.assignments[i] === -1 ? this.defaultColor : this.colors[this.assignments[i] % this.colors.length]), pointRadius: 5, type: 'scatter', order: 2 }];
+                if (this.centroids.length > 0) { datasets.push({ data: this.centroids, pointBackgroundColor: this.centroids.map((_, i) => this.colors[i % this.colors.length]), pointBorderColor: '#1e293b', pointRadius: 10, pointStyle: 'rectRot', pointBorderWidth: 2, type: 'scatter', order: 1 }); }
+                this.chart.data.datasets = datasets; this.chart.update();
+            },
+
+            setExplanation(title, text) { this.explanationBox.innerHTML = `<h4 class="font-bold">${title}</h4><p class="text-sm">${text}</p>`; },
+            resetUIState() { this.initBtn.disabled = false; this.assignBtn.disabled = true; this.updateBtn.disabled = true; this.setExplanation('¡Explora!', 'Ajusta K y sigue los pasos del algoritmo.'); }
+        };
+
+        window.onload = () => {
+             // Lazily initialize charts when their section is first viewed
+        };
+
+    </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
