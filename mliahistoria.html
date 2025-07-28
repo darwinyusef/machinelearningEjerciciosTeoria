@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Evolución de la IA y el ML</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #334155; /* Dark slate gray text */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        .header-bg {
+            background: linear-gradient(to right, #6366f1, #8b5cf6); /* Purple gradient */
+            color: #ffffff;
+            padding: 4rem 1.5rem;
+            text-align: center;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+        }
+        .footer-bg {
+            background-color: #1e293b; /* Darker blue-gray */
+            color: #cbd5e1; /* Light gray text */
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header-bg">
+        <h1 class="text-5xl font-extrabold mb-4 leading-tight">La Fascinante Evolución de la <br><span class="text-indigo-200">Inteligencia Artificial</span> y el <span class="text-purple-200">Aprendizaje Automático</span></h1>
+        <p class="text-xl font-light opacity-90">Un viaje a través de los hitos y transformaciones que han dado forma a estas tecnologías revolucionarias.</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container py-10">
+
+        <!-- Introduction Section -->
+        <section class="section-card">
+            <h2 class="text-4xl font-bold mb-6 text-gray-800">Introducción: Un Campo en Constante Evolución</h2>
+            <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                La Inteligencia Artificial (IA) y el Aprendizaje Automático (ML) son dos de los campos más transformadores de nuestro tiempo, redefiniendo industrias, mejorando la vida diaria y planteando nuevas preguntas sobre el futuro. Aunque a menudo se usan indistintamente, el ML es un subconjunto de la IA, centrado en permitir que los sistemas aprendan de los datos sin ser programados explícitamente.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-700">
+                Este documento explora la cronología y los momentos clave que han llevado a la IA y el ML desde conceptos teóricos hasta las potentes herramientas que conocemos hoy.
+            </p>
+        </section>
+
+        <!-- Early Beginnings (Pre-1950s) -->
+        <section class="section-card flex flex-col md:flex-row items-center">
+            <div class="md:w-2/3 md:pr-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">1. Los Primeros Conceptos y Raíces Filosóficas (Antes de 1950)</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    La idea de máquinas que piensan no es nueva. Filósofos y matemáticos han explorado la posibilidad de la inteligencia artificial mucho antes de que existieran las computadoras. Desde el mito griego de Pigmalión hasta las "máquinas pensantes" en la ficción, la humanidad ha soñado con replicar la inteligencia.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700">
+                    Hitos clave incluyen el trabajo de George Boole sobre la lógica simbólica (mediados del siglo XIX), y los avances de Alan Turing en la computación con su concepto de la Máquina de Turing y la prueba de Turing (década de 1930 y 1940), sentando las bases teóricas para la IA.
+                </p>
+            </div>
+            <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+                <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Alan+Turing" alt="Imagen de Alan Turing" class="rounded-lg shadow-md w-full max-w-xs">
+            </div>
+        </section>
+
+        <!-- Birth of AI (1950s-1970s) -->
+        <section class="section-card flex flex-col md:flex-row-reverse items-center">
+            <div class="md:w-2/3 md:pl-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">2. El Nacimiento de la IA y la Primera "IA Winter" (1950s - 1970s)</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    El término "Inteligencia Artificial" fue acuñado en 1956 por John McCarthy durante la Conferencia de Dartmouth, un evento seminal que marcó el inicio oficial del campo. Los investigadores de esta era eran optimistas, prediciendo que las máquinas alcanzarían la inteligencia humana en cuestión de décadas.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    Se desarrollaron programas como el "Logic Theorist" (Newell, Simon, Shaw) y "ELIZA" (Weizenbaum), que mostraban habilidades impresionantes para la época. Sin embargo, las limitaciones computacionales y la complejidad de los problemas reales llevaron a una desilusión, conocida como la primera "IA Winter" (Invierno de la IA), donde la financiación y el interés disminuyeron drásticamente.
+                </p>
+            </div>
+            <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+                <img src="https://placehold.co/300x200/818cf8/ffffff?text=Conferencia+Dartmouth" alt="Imagen de la Conferencia de Dartmouth" class="rounded-lg shadow-md w-full max-w-xs">
+            </div>
+        </section>
+
+        <!-- Expert Systems & Revival (1980s) -->
+        <section class="section-card flex flex-col md:flex-row items-center">
+            <div class="md:w-2/3 md:pr-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">3. Sistemas Expertos y el Segundo "IA Winter" (1980s)</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    La década de 1980 vio un resurgimiento del interés en la IA, impulsado por el éxito de los sistemas expertos. Estos programas utilizaban reglas basadas en el conocimiento de expertos humanos para tomar decisiones en dominios específicos, como el diagnóstico médico (MYCIN) o la configuración de computadoras (XCON).
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    Aunque útiles, los sistemas expertos eran costosos de construir y mantener, y no podían manejar situaciones fuera de su dominio predefinido. Esto, junto con la sobrepromesa y la falta de avances fundamentales en la inteligencia general, llevó a la segunda "IA Winter" a finales de los 80, con una nueva caída en la financiación.
+                </p>
+            </div>
+            <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+                <img src="https://placehold.co/300x200/c084fc/ffffff?text=Sistema+Experto" alt="Imagen de un sistema experto" class="rounded-lg shadow-md w-full max-w-xs">
+            </div>
+        </section>
+
+        <!-- Machine Learning Emerges (1990s-2000s) -->
+        <section class="section-card flex flex-col md:flex-row-reverse items-center">
+            <div class="md:w-2/3 md:pl-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">4. El Auge del Aprendizaje Automático (1990s - 2000s)</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    Durante los años 90 y principios de los 2000, el foco de la investigación en IA se desplazó de los sistemas basados en reglas a los enfoques estadísticos y basados en datos. Aquí es donde el Aprendizaje Automático (ML) comenzó a florecer como un campo distinto.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    Algoritmos como las Máquinas de Vectores de Soporte (SVM), los árboles de decisión y las redes bayesianas ganaron popularidad. La disponibilidad creciente de datos (gracias a Internet) y el aumento de la capacidad computacional permitieron que estos métodos estadísticos superaran a los sistemas basados en conocimiento en muchas tareas, como el reconocimiento de voz y el filtrado de spam.
+                </p>
+            </div>
+            <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+                <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Aprendizaje+Automatico" alt="Imagen de Aprendizaje Automático" class="rounded-lg shadow-md w-full max-w-xs">
+            </div>
+        </section>
+
+        <!-- Deep Learning Revolution (2010s-Present) -->
+        <section class="section-card flex flex-col md:flex-row items-center">
+            <div class="md:w-2/3 md:pr-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">5. La Revolución del Aprendizaje Profundo (2010s - Presente)</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    La última década ha sido testigo de una explosión en el campo de la IA, impulsada por el Aprendizaje Profundo (Deep Learning), un subcampo del ML que utiliza redes neuronales artificiales con múltiples capas.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    Factores clave para este auge incluyen:
+                </p>
+                <ul class="list-disc list-inside text-lg leading-relaxed text-gray-700 mb-4 pl-5">
+                    <li><strong>Big Data:</strong> La disponibilidad masiva de conjuntos de datos etiquetados.</li>
+                    <li><strong>GPUs:</strong> El desarrollo de unidades de procesamiento gráfico (GPUs) que pueden manejar eficientemente los cálculos paralelos requeridos por las redes neuronales.</li>
+                    <li><strong>Avances Algorítmicos:</strong> Nuevas arquitecturas de redes (CNNs, RNNs, Transformers) y técnicas de entrenamiento.</li>
+                </ul>
+                <p class="text-lg leading-relaxed text-gray-700">
+                    Esto ha llevado a avances revolucionarios en el reconocimiento de imágenes (ImageNet), procesamiento del lenguaje natural (LLMs como GPT-3/4), vehículos autónomos, juegos (AlphaGo) y mucho más, marcando una nueva era para la IA.
+                </p>
+            </div>
+            <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+                <img src="https://placehold.co/300x200/818cf8/ffffff?text=Deep+Learning" alt="Imagen de Aprendizaje Profundo" class="rounded-lg shadow-md w-full max-w-xs">
+            </div>
+        </section>
+
+        <!-- Future Outlook -->
+        <section class="section-card flex flex-col md:flex-row-reverse items-center">
+            <div class="md:w-2/3 md:pl-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">6. El Futuro de la IA y el ML</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    El futuro de la IA y el ML promete ser aún más dinámico. Estamos viendo un crecimiento continuo en áreas como la IA generativa, la IA explicable (XAI), la IA ética y la robótica avanzada.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    Los desafíos incluyen la garantía de la equidad y la transparencia en los algoritmos, la gestión del impacto en el empleo y la preparación para la posibilidad de la Inteligencia Artificial General (AGI), que podría igualar o superar la inteligencia humana en una amplia gama de tareas. La colaboración global y la regulación responsable serán cruciales para navegar esta nueva frontera.
+                </p>
+            </div>
+            <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+                <img src="https://placehold.co/300x200/c084fc/ffffff?text=Futuro+IA" alt="Imagen del futuro de la IA" class="rounded-lg shadow-md w-full max-w-xs">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer-bg">
+        <p class="text-sm">&copy; 2025 Explorando la IA y el ML. Todos los derechos reservados.</p>
+        <p class="text-sm mt-2">Página creada para ilustrar la evolución de estas tecnologías.</p>
+    </footer>
+
+</body>
+</html>
