@@ -1,4 +1,4 @@
-# Estudios de Estadística Descriptiva para Ciencia de Datos -> by @darwinyusef
+# Machine learning Ejercicios y Teoria -> by @darwinyusef
 
 ## 1. Medidas de Tendencia Central
 En esta sección, exploraremos las medidas de tendencia central que nos ayudan a entender la ubicación central de los datos en un conjunto. Aprenderemos sobre la media aritmética, la mediana y la moda.
