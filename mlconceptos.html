@@ -201,10 +201,71 @@
         </section>
     </main>
 
-    <div class="w-full bg-slate-900 text-slate-400 text-center py-12 px-6 mt-20 flex justify-center">
+    <div class="w-full bg-slate-900 text-slate-400 text-center py-12 px-6 mt-20 flex justify-center flex-col">
         <h1> Ingresa a este link es un Cheat sheet para seleccionar un modelo de IA </h1>
-        <a href="https://scikit-learn.org/stable/machine_learning_map.html"> Modelado  </a>
+        <a href="https://scikit-learn.org/stable/machine_learning_map.html" class="text-center text-5xl"> Modelado  </a>
         <img src="https://raw.githubusercontent.com/darwinyusef/machinelearningEjerciciosTeoria/refs/heads/master/photos/mlo.JPG">
+          <div class="space-y-12 max-w-4xl w-full">
+
+        <div class="bg-gray-800 p-8 rounded-lg shadow-2xl">
+            <h2 class="text-3xl font-bold text-center mb-8 text-blue-400">Programación Tradicional</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div class="flex flex-col items-end space-y-4">
+                    <div class="flex items-center gap-4">
+                        <span class="text-lg font-semibold w-28 text-right">Input (Datos)</span>
+                        <div class="arrow bg-white"></div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-lg font-semibold w-28 text-right">Reglas</span>
+                        <div class="arrow bg-white"></div>
+                    </div>
+                </div>
+
+                <div class="bg-purple-700 text-white p-6 rounded-lg shadow-xl text-center flex items-center justify-center h-32 w-64 md:w-80 flex-shrink-0">
+                    <span class="text-2xl font-bold">Lógica Programada</span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="arrow bg-white transform rotate-180 md:rotate-0"></div> <span class="text-lg font-semibold w-28 text-left">Respuestas</span>
+                </div>
+            </div>
+            <p class="mt-8 text-center text-gray-300">
+                Aquí, proporcionamos los <strong>datos</strong> y las <strong>reglas explícitas</strong> (el código) para que el sistema genere las <strong>respuestas</strong>. Las reglas son predefinidas por el programador.
+            </p>
+        </div>
+
+        <div class="bg-gray-800 p-8 rounded-lg shadow-2xl">
+            <h2 class="text-3xl font-bold text-center mb-8 text-green-400">IA / Machine Learning</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div class="flex flex-col items-end space-y-4">
+                    <div class="flex items-center gap-4">
+                        <span class="text-lg font-semibold w-28 text-right">Input (Datos)</span>
+                        <div class="arrow bg-white"></div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-lg font-semibold w-28 text-right">Respuestas</span>
+                        <div class="arrow bg-white"></div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-600 text-white p-6 rounded-lg shadow-xl text-center flex items-center justify-center h-32 w-64 md:w-80 flex-shrink-0">
+                    <span class="text-2xl font-bold">Modelo de Aprendizaje</span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="arrow bg-white transform rotate-180 md:rotate-0"></div> <span class="text-lg font-semibold w-28 text-left">Reglas (Aprendidas)</span>
+                </div>
+            </div>
+            <p class="mt-8 text-center text-gray-300">
+                En este caso, proporcionamos los <strong>datos</strong> y las <strong>respuestas</strong> deseadas. El sistema de IA/ML se encarga de <strong>aprender las reglas</strong> o patrones que conectan los datos con esas respuestas.
+            </p>
+        </div>
+
+        <p class="text-center text-gray-400 text-lg mt-10">
+            En la IA/Machine Learning, las "reglas" no se programan, sino que son el resultado del entrenamiento del modelo, que las descubre a partir de los datos y las respuestas.
+        </p>
+
+    </div>
     </div>
 
     <footer class="bg-slate-900 text-slate-400 text-center py-12 px-6 mt-20">
