@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Potenciando el Fútbol con Machine Learning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #0052D4, #4364F7, #6FB1FC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .flow-chart-node {
+            border: 2px solid #6FB1FC;
+            background-color: #f0f8ff;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            color: #0052D4;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .flow-chart-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #4364F7;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight gradient-text">Revolución Táctica</h1>
+            <p class="text-xl md:text-2xl text-gray-600 mt-2">Cómo el Machine Learning está redefiniendo el éxito en el fútbol</p>
+        </header>
+
+        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-8">
+            <div class="text-center md:text-left">
+                <h2 class="text-3xl font-bold text-gray-900">El Desafío del Equipo Nacional</h2>
+                <p class="mt-4 text-lg text-gray-700">Tras perder cuatro de los últimos cinco partidos, el equipo se enfrenta a una crisis de rendimiento. La clave para revertir esta situación no está solo en el campo, sino en los datos: videos de partidos, estadísticas de jugadores y registros de entrenamientos son una mina de oro esperando a ser explotada con Machine Learning.</p>
+            </div>
+            <div class="flex-shrink-0 grid grid-cols-2 gap-4 text-center">
+                <div class="bg-blue-100 text-blue-800 p-4 rounded-lg">
+                    <div class="text-4xl font-bold">4/5</div>
+                    <div class="text-sm">Partidos Perdidos</div>
+                </div>
+                <div class="bg-green-100 text-green-800 p-4 rounded-lg">
+                    <div class="text-4xl font-bold">100+</div>
+                    <div class="text-sm">GB de Datos</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">1. Aprendizaje Supervisado: Prediciendo el Futuro</h3>
+                <p class="text-gray-700 mb-6">Este enfoque "enseña" a un modelo usando datos históricos con resultados conocidos (victorias/derrotas). El objetivo es identificar patrones para anticipar eventos futuros y corregir debilidades estratégicas.</p>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="supervisedModelsChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-gray-600 mt-2">Comparación de la precisión predictiva de diferentes modelos supervisados para anticipar el resultado de un partido.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Simulando la Decisión de un Entrenador</h3>
+                <p class="text-gray-700 mb-6">Un modelo como el "Árbol de Decisión" imita el razonamiento de un entrenador, dividiendo los datos para tomar decisiones basadas en eventos específicos. Esto ayuda a entender qué factores son más influyentes en el resultado.</p>
+                <div class="space-y-2">
+                    <div class="flow-chart-node">> 60% Posesión?</div>
+                    <div class="flex justify-around">
+                        <div class="flex flex-col items-center">
+                            <div class="flow-chart-arrow">↓</div>
+                            <div class="text-sm font-semibold text-green-600">SÍ</div>
+                            <div class="flow-chart-node">> 10 Tiros al arco?</div>
+                             <div class="flex justify-around w-full mt-2">
+                                <div class="flex flex-col items-center">
+                                    <div class="flow-chart-arrow">↓</div>
+                                    <div class="text-sm font-semibold text-green-600">SÍ</div>
+                                    <div class="flow-chart-node bg-green-100 border-green-500 text-green-800">Alta Prob. Victoria</div>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="flow-chart-arrow">↓</div>
+                                    <div class="text-sm font-semibold text-red-600">NO</div>
+                                    <div class="flow-chart-node bg-yellow-100 border-yellow-500 text-yellow-800">Prob. Empate</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="flow-chart-arrow">↓</div>
+                            <div class="text-sm font-semibold text-red-600">NO</div>
+                            <div class="flow-chart-node bg-red-100 border-red-500 text-red-800">Baja Prob. Victoria</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">2. Aprendizaje No Supervisado: Descubriendo Patrones Ocultos</h3>
+                <p class="text-gray-700 mb-6">Estos modelos analizan datos sin etiquetas previas para encontrar agrupaciones naturales. El "clustering" puede agrupar jugadores por estilos de juego similares, revelando perfiles valiosos más allá de goles y asistencias.</p>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="unsupervisedClusteringChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-gray-600 mt-2">Clustering de jugadores basado en métricas de rendimiento defensivo vs. ofensivo.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">3. Aprendizaje por Refuerzo: Optimizando la Estrategia</h3>
+                <p class="text-gray-700 mb-6">Este modelo aprende a través de la simulación y la recompensa. Un "agente" prueba tácticas continuamente en un entorno virtual para descubrir cuáles ofrecen la mayor probabilidad de éxito, optimizando las decisiones en tiempo real.</p>
+                <div class="flex items-center justify-center space-x-4 mt-8">
+                    <div class="text-center">
+                        <div class="text-5xl">🤖</div>
+                        <div class="font-bold">Agente (IA)</div>
+                        <p class="text-xs">Prueba tácticas</p>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-500">⇄</div>
+                    <div class="text-center">
+                        <div class="text-5xl">🏟️</div>
+                        <div class="font-bold">Entorno</div>
+                        <p class="text-xs">Partido Simulado</p>
+                    </div>
+                     <div class="text-3xl font-bold text-blue-500">⇄</div>
+                    <div class="text-center">
+                        <div class="text-5xl">🏆</div>
+                        <div class="font-bold">Recompensa</div>
+                        <p class="text-xs">Victoria / Gol</p>
+                    </div>
+                </div>
+                 <p class="text-center text-sm text-gray-600 mt-8">El ciclo de aprendizaje por refuerzo permite a la IA perfeccionar estrategias para maximizar las recompensas.</p>
+            </div>
+
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Herramientas y Claves del Éxito</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-center mb-4 text-blue-700">Librerías y Lenguajes</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center bg-gray-100 p-3 rounded-lg"><span class="text-2xl mr-3">🐍</span><div><span class="font-bold">Python:</span> El lenguaje preferido por su eficiencia en análisis de datos.</div></li>
+                            <li class="flex items-center bg-gray-100 p-3 rounded-lg"><span class="text-2xl mr-3">🔧</span><div><span class="font-bold">Scikit-learn:</span> Librería esencial para modelos clásicos de ML.</div></li>
+                            <li class="flex items-center bg-gray-100 p-3 rounded-lg"><span class="text-2xl mr-3">🧠</span><div><span class="font-bold">TensorFlow & PyTorch:</span> Frameworks para redes neuronales y aprendizaje profundo.</div></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-center mb-4 text-blue-700">Más Allá de los Algoritmos</h4>
+                        <p class="text-gray-700">Seleccionar el modelo correcto es clave, pero el verdadero éxito reside en:</p>
+                        <ul class="list-disc list-inside space-y-2 mt-3 text-gray-700">
+                            <li><span class="font-bold">Saber identificar</span> cuándo y por qué utilizar cada herramienta según las circunstancias del equipo.</li>
+                            <li><span class="font-bold">Priorizar la resolución</span> de problemas prácticos y cotidianos sobre teorías abstractas.</li>
+                            <li><span class="font-bold">Garantizar datos de alta calidad,</span> ya que la precisión del modelo depende directamente de ellos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-gray-600">¿Qué modelo te gustaría probar para mejorar los resultados del equipo?</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxLength = 16) => {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).length > maxLength) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const palette = {
+            blue: '#0052D4',
+            lightBlue: '#6FB1FC',
+            midBlue: '#4364F7',
+            green: '#4CAF50',
+            yellow: '#FFC107',
+            red: '#F44336'
+        };
+
+        const supervisedCtx = document.getElementById('supervisedModelsChart').getContext('2d');
+        new Chart(supervisedCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Regresión Logística', 'Árbol de Decisión', 'Random Forest', wrapLabel('Máquinas de Soporte Vectorial (SVM)'), 'Redes Neuronales'].map(l => typeof l === 'string' ? wrapLabel(l) : l),
+                datasets: [{
+                    label: 'Precisión Predictiva (%)',
+                    data: [80, 85, 92, 88, 95],
+                    backgroundColor: [palette.blue, palette.lightBlue, palette.midBlue, palette.green, palette.red],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    y: {
+                         grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const unsupervisedCtx = document.getElementById('unsupervisedClusteringChart').getContext('2d');
+        new Chart(unsupervisedCtx, {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'Mediocampistas Creativos',
+                    data: [{x: 7, y: 8, r: 15}, {x: 8, y: 7, r: 18}, {x: 6, y: 9, r: 12}],
+                    backgroundColor: 'rgba(0, 82, 212, 0.7)'
+                }, {
+                    label: 'Defensores Sólidos',
+                    data: [{x: 2, y: 3, r: 20}, {x: 3, y: 2, r: 17}, {x: 1, y: 4, r: 15}],
+                    backgroundColor: 'rgba(67, 100, 247, 0.7)'
+                }, {
+                    label: 'Carrileros Incansables',
+                    data: [{x: 5, y: 5, r: 14}, {x: 6, y: 4, r: 16}, {x: 4, y: 6, r: 13}],
+                    backgroundColor: 'rgba(111, 177, 252, 0.7)'
+                }, {
+                    label: 'Delanteros Fantasma',
+                    data: [{x: 9, y: 4, r: 10}, {x: 8, y: 5, r: 11}],
+                    backgroundColor: 'rgba(76, 175, 80, 0.7)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Métricas Ofensivas (Pases Clave, Tiros)'
+                        },
+                         grid: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Métricas Defensivas (Intercepciones, Entradas)'
+                        },
+                         grid: {
+                            color: '#e0e0e0'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
